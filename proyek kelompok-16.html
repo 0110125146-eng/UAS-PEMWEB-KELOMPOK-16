@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Needs Store</title>
+
+    <!-- FONT POPPINS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* HEADER */
+        header {
+            background: #ee4d2d;
+            padding: 15px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        header input {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .cart-btn {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            color: #ee4d2d;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* PRODUK GRID */
+        .product-grid {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .product:hover {
+            transform: scale(1.03);
+        }
+        .product img {
+            width: 100%;
+            border-radius: 6px;
+            height: 160px;
+            object-fit: cover;
+        }
+        .product h4 {
+            margin: 10px 0 5px;
+            font-size: 16px;
+            color: #333;
+        }
+        .product p {
+            margin: 5px 0;
+            font-weight: bold;
+            color: #ee4d2d;
+        }
+        .product button {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            color: white;
+            background: #ee4d2d;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* KERANJANG */
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            background: white;
+            box-shadow: -3px 0 6px rgba(0,0,0,0.3);
+            padding: 20px;
+            transition: 0.3s;
+            overflow-y: auto;
+        }
+        .cart-panel.open {
+            right: 0;
+        }
+        .cart-panel h2 {
+            margin-top: 0;
+            color: #ee4d2d;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .checkout-btn {
+            width: 100%;
+            background: #ee4d2d;
+            padding: 10px;
+            border: none;
+            color: white;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Wedding Needs Store</h1>
+        <input type="text" id="search" placeholder="Cari produk..." />
+        <div class="cart-btn" onclick="toggleCart()">Keranjang 🛒</div>
+    </header>
+
+    <!-- PRODUK -->
+    <div class="product-grid">
+        
+        <!-- 1 -->
+        <div class="product">
+            <img src="cincin.jpg" />
+            <h4>Cincin Pernikahan Elegance</h4>
+            <p>Rp 1.200.000</p>
+            <button onclick="addToCart('Cincin Pernikahan Elegance', 1200000)">Tambah ke Keranjang</button>
+        </div>
+
+        <!-- 2 -->
+        <div class="product">
+            <img src="wedding.jpg" />
+            <h4>Paket Mini Wedding</h4>
+            <p>Rp 12.000.000</p>
+            <button onclick="addToCart('Paket Mini Wedding', 12000000)">Tambah ke Keranjang</button>
+        </div>
+
+        <!-- 3 -->
+        <div class="product">
+            <img src="buket.jpg" />
+            <h4>Buket Bunga Wedding</h4>
+            <p>Rp 180.000</p>
+            <button onclick="addToCart('Buket Bunga Wedding', 180000)">Tambah ke Keranjang</button>
+        </div>
+
+        <div class="product">
+            <img src="sepatu pengantin.jpg" />
+            <h4>Heels Pengantin Wanita</h4>
+            <p>Rp 350.000</p>
+            <button onclick="addToCart('Heels Pengantin Wanita', 350000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="bajupengantinwanita.jpg" />
+            <h4>Baju Pengantin Wanita</h4>
+            <p>Rp 500.000</p>
+            <button onclick="addToCart('Baju Pengantin Wanita', 500000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="kalungpernikahan.jpg" />
+            <h4>Kalung Pernikahan</h4>
+            <p>Rp 3.000.000</p>
+            <button onclick="addToCart('Kalung Pernikahan', 3000000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="undanganpernikahan.jpg" />
+            <h4>Undangan Pernikahan</h4>
+            <p>Rp 2.000/pcs</p>
+            <button onclick="addToCart('Undangan Pernikahan', 2000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="souvenirs.jpg" />
+            <h4>Souvenirs</h4>
+            <p>Rp 250.000/box</p>
+            <button onclick="addToCart('Souvenirs', 250000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="sepatupengantincowok.jpg" />
+            <h4>Sepatu Pengantin Cowok</h4>
+            <p>Rp 105.000</p>
+            <button onclick="addToCart('Sepatu Pengantin Cowok', 105000)">Tambah ke Keranjang</button>
+        </div>
+             <div class="product">
+            <img src="hennawedding.jpg" />
+            <h4>Paket komplit Henna Wedding</h4>
+            <p>Rp 200.000</p>
+            <button onclick="addToCart('Paket komplit Henna Wedding', 200000)">Tambah ke Keranjang</button>
+        </div>
+                 <div class="product">
+            <img src="bajupengantincowok.jpg" />
+            <h4>Baju Pengantin Cowok</h4>
+            <p>Rp 500.000</p>
+            <button onclick="addToCart('Baju Pengantin Cowok', 500000)">Tambah ke Keranjang</button>
+        </div>
+        
+
+
+    </div>
+
+    
+    <div class="cart-panel" id="cartPanel">
+        <h2>Keranjang</h2>
+        <div id="cartItems"></div>
+        <h3>Total: Rp <span id="totalPrice">0</span></h3>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+
+<script>
+    let cart = [];
+    
+    function toggleCart() {
+        document.getElementById("cartPanel").classList.toggle("open");
+    }
+
+    function addToCart(name, price) {
+        cart.push({name, price});
+        updateCart();
+    }
+
+    function updateCart() {
+        const items = document.getElementById("cartItems");
+        const totalBox = document.getElementById("totalPrice");
+
+        items.innerHTML = "";
+        let total = 0;
+
+        cart.forEach(item => {
+            total += item.price;
+            items.innerHTML += `
+                <div class="cart-item">
+                    <span>${item.name}</span>
+                    <span>Rp ${item.price.toLocaleString()}</span>
+                </div>
+            `;
+        });
+
+        totalBox.innerText = total.toLocaleString();
+    }
+</script>
+
+</body>
+</html>
