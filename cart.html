@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang – Wedding Needs Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css2/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --pink:#ff7eb3;
+      --teal:#2dd4bf;
+      --light:#fff9fb;
+      --dark:#222;
+    }
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--light);
+      color:var(--dark);
+    }
+    .cart-card{
+      border:none;
+      border-radius:1rem;
+      overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .cart-card:hover{transform:translateY(-3px); box-shadow:0 10px 25px rgba(0,0,0,.1);}
+    .cart-img{
+      width:80px; height:80px;
+      object-fit:cover;
+      border-radius:.75rem;
+    }
+    .btn-del{
+      background:transparent;
+      border:none;
+      color:#e74c3c;
+      font-size:1.1rem;
+      transition:color .2s ease;
+    }
+    .btn-del:hover{color:#c0392b;}
+    .total-bar{
+      position:sticky;
+      bottom:0;
+      background:rgba(255,255,255,.85);
+      backdrop-filter:blur(10px);
+      border-top:1px solid rgba(0,0,0,.08);
+      padding:1rem 0;
+      z-index:1020;
+    }
+    .btn-checkout{
+      background:var(--pink);
+      border:none;
+      padding:.65rem 1.8rem;
+      border-radius:2rem;
+      font-weight:600;
+      color:#fff;
+      transition:background .3s ease, transform .3s ease;
+    }
+    .btn-checkout:hover{background:var(--teal); transform:translateY(-2px);}
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar bg-white px-3 px-lg-5 py-3 shadow-sm">
+  <a class="navbar-brand fw-bold" href="index.html">Wedding Needs</a>
+  <a href="cart.html" class="btn btn-outline-secondary btn-sm">🛒 Keranjang</a>
+</nav>
+
+<div class="container py-4">
+  <h2 class="fw-semibold mb-4">Keranjang Belanja</h2>
+
+  
+  <div id="cart-list" class="row g-3">
+    
+    
+    </div>
+  </div>
+
+  
+  <div class="total-bar mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Total: <span id="total"></span></h5>
+      <a href="checkout.html" class="btn btn-checkout">Checkout</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="js2/bootstrap.min.js"></script>
+</body>
+</html>
