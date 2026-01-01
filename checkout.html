@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout</title>
+<link href="css2/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="paket.html" class="btn-back-estetik">⬅ Kembali</a>
+</nav>
+
+<h1 class="title">Checkout</h1>
+
+<div class="checkout-box" id="checkout-list"></div>
+
+<h2 class="total" id="total"></h2>
+
+<button class="btn-wa" onclick="kirimWhatsApp()">Pesan via WhatsApp</button>
+
+<script>
+const nomorWA = "+62 838-1184-2365"; 
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let list = document.getElementById("checkout-list");
+let total = 0;
+
+if (cart.length === 0) {
+  list.innerHTML = "<p>Belum ada pesanan.</p>";
+} else {
+  let pesan = "Halo Wedding Needs Store,%0A%0ASaya ingin memesan:%0A";
+
+  cart.forEach((item, index) => {
+    list.innerHTML += `
+      <p>${index + 1}. ${item.nama} - Rp ${item.harga.toLocaleString("id-ID")}</p>
+    `;
+    pesan += `${index + 1}. ${item.nama} - Rp ${item.harga.toLocaleString("id-ID")}%0A`;
+    total += item.harga;
+  });
+
+  document.getElementById("total").innerHTML =
+    "Total: Rp " + total.toLocaleString("id-ID");
+
+  window.pesanWA = pesan + `%0A*Total: Rp ${total.toLocaleString("id-ID")}*`;
+}
+
+function kirimWhatsApp() {
+  if (cart.length === 0) return alert("Keranjang masih kosong!");
+  
+  window.open(
+    `https://wa.me/${nomorWA}?text=${window.pesanWA}`,
+    "_blank"
+  );
+
+  localStorage.clear();
+}
+</script>
+<script src="js2/bootstrap.min.js"></script>
+</body>
+</html>
