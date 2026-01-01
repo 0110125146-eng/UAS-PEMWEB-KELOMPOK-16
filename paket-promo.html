@@ -229,10 +229,10 @@
   },1000);
 
   
-  let cart=JSON.parse(localStorage.getItem('weddingCart')||'[]');
+  let cart=JSON.parse(localStorage.getItem('Cart')||'[]');
   function addToCart(name,price){
     cart.push({name,price,qty:1});
-    localStorage.setItem('weddingCart',JSON.stringify(cart));
+    localStorage.setItem('Cart',JSON.stringify(Cart));
     
     const toast=`<div class="position-fixed top-0 end-0 p-3" style="z-index:11">
       <div class="toast show" role="alert">

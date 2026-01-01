@@ -40,14 +40,14 @@
     <div class="card">
        <img src="https://i.pinimg.com/736x/f2/e7/15/f2e715bc79585cb036887c2c5dd1e816.jpg">
        <h3>Paket Royal Luminaire</h3>
-       <p>Rp 20.000.000</p>
+       <p>Rp 18.000.000</p>
        <button onclick="addToCart('Paket Essential Harmony',20000000)">Pilih</button>
     </div>
 
     <div class="card">
         <img src="https://i.pinimg.com/736x/4b/59/ee/4b59ee7cab4fbe0626e5050c91e5dc56.jpg">
         <h3>Paket Signature Radiance</h3>
-        <p>Rp 5.000.000</p>
+        <p>Rp 4.000.000</p>
         <button onclick="addToCart('Paket Signature Radience',5000000)">Pilih</button>
     </div>
 
@@ -61,12 +61,67 @@
     <div class="card">
         <img src="https://i.pinimg.com/1200x/da/de/2e/dade2eca3bff4d8b095b6d0778a506e2.jpg">
         <h3>Paket Home Band</h3>
-        <p>Rp 9.000.000</p>
+        <p>Rp 6.000.000</p>
         <button onclick="addToCart('Paket Home Band',9000000)">Pilih</button>
+    </div>
+    <div class="card">
+        <img src="https://weddingmarket.com/storage/images/artikelideacontent/new/8eb17439dd924f8716a2e57750e4f30353bf34fc.webp">
+        <h3>Paket Bridesmaid dress package (10 orang)</h3>
+        <p>Rp 5.500.000</p>
+        <button onclick="addToCart('Paket Home Band',5500000)">Pilih</button>
+    </div>
+
+    <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrPw26EfLJ6MY9MeHLGnyro7Bv91UUi-on8A&s">
+        <h3>Paket Royal Catering </h3>
+        <p>Rp Rp20.000.000 – Rp50.000.000</p>
+        <button onclick="addToCart('Paket Royal Catering ',20000000-50000000)">Pilih</button>
+    </div>
+
+    <div class="card">
+        <img src="https://anariasouvenir.com/wp-content/uploads/2023/11/VIP_baru_19-860x565.webp">
+        <h3>Paket Exclusive Gift Set</h3>
+        <p>Rp 250.000 per-set</p>
+        <button onclick="addToCart('Paket Exclusive Gift Set ',250000)">Pilih</button>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+
+<script>
+  const target=new Date("January 31, 2025 23:59:59").getTime();
+  const cd=document.getElementById("countdown");
+  setInterval(()=>{
+    let now=new Date().getTime();
+    let d=target-now;
+    let days=Math.floor(d/(1000*60*60*24));
+    let hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+    let mins=Math.floor((d%(1000*60*60))/(1000*60));
+    let secs=Math.floor((d%(1000*60))/1000);
+    cd.textContent=`${days}h ${hrs}j ${mins}m ${secs}d`;
+    if(d<0){cd.textContent="Promo berakhir"}
+  },1000);
+
+  
+  let cart=JSON.parse(localStorage.getItem('Cart')||'[]');
+  function addToCart(name,price){
+    cart.push({name,price,qty:1});
+    localStorage.setItem('Cart',JSON.stringify(Cart));
+    
+    const toast=`<div class="position-fixed top-0 end-0 p-3" style="z-index:11">
+      <div class="toast show" role="alert">
+        <div class="toast-header">
+          <strong class="me-auto"><i class="fa-solid fa-circle-check text-success"></i> Berhasil</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">${name} masuk keranjang.</div>
+      </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend',toast);
+    setTimeout(()=>document.querySelector('.toast').remove(),3000);
+  }
+</script>
 <script src="js2/bootstrap.bundle.min.js"></script>
 </body>
 </html>
