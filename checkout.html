@@ -1,63 +1,161 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout</title>
-<link href="css2/bootstrap.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Checkout – Wedding Needs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css2/bootstrap.min.css">
+    
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="paket.html" class="btn-back-estetik">⬅ Kembali</a>
-</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Wedding Needs</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="paket.html">Paket</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-seller.html">Best Seller</a></li>
+          <li class="nav-item"><a class="nav-link" href="paket-promo.html">Paket Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">🛒</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<h1 class="title">Checkout</h1>
 
-<div class="checkout-box" id="checkout-list"></div>
+<div class="container py-4">
+  <div class="row g-4">
 
-<h2 class="total" id="total"></h2>
+    <div class="col-lg-6">
+      <div class="card checkout-card p-4">
+        <h5 class="mb-3">Data Pemesan</h5>
 
-<button class="btn-wa" onclick="kirimWhatsApp()">Pesan via WhatsApp</button>
+        <div class="mb-3">
+          <label class="form-label">Nama Lengkap</label>
+          <input type="text" id="nama" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">No WhatsApp</label>
+          <input type="text" id="wa" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Alamat</label>
+          <textarea id="alamat" class="form-control" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card checkout-card p-4">
+        <h5 class="mb-3">Ringkasan Pesanan</h5>
+
+        <div id="checkout-list"></div>
+
+        <hr>
+        <h5>Total: <span id="checkout-total">Rp 0</span></h5>
+
+        <button onclick="checkoutWeb()" class="btn btn-primary w-100 mt-3">
+          Checkout Sekarang
+        </button>
+
+        <button onclick="checkoutWA()" id="btnWA" class="btn btn-success w-100 mt-2" disabled>
+          Lanjutkan ke WhatsApp
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script>
-const nomorWA = "+62 838-1184-2365"; 
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const list = document.getElementById("checkout-list");
+const totalEl = document.getElementById("checkout-total");
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let list = document.getElementById("checkout-list");
+
+
 let total = 0;
 
 if (cart.length === 0) {
-  list.innerHTML = "<p>Belum ada pesanan.</p>";
+  list.innerHTML = "<p>Keranjang kosong</p>";
 } else {
-  let pesan = "Halo Wedding Needs Store,%0A%0ASaya ingin memesan:%0A";
+  cart.forEach(item => {
+    const subtotal = item.price * item.qty;
+    total += subtotal;
 
-  cart.forEach((item, index) => {
+
+
     list.innerHTML += `
-      <p>${index + 1}. ${item.nama} - Rp ${item.harga.toLocaleString("id-ID")}</p>
+      <div class="d-flex align-items-center mb-3">
+        <img src="${item.image}" width="60" class="me-3 rounded">
+        <div class="flex-grow-1">
+          <strong>${item.name}</strong><br>
+          ${item.qty} x Rp ${item.price.toLocaleString("id-ID")}
+        </div>
+        <div>Rp ${subtotal.toLocaleString("id-ID")}</div>
+      </div>
     `;
-    pesan += `${index + 1}. ${item.nama} - Rp ${item.harga.toLocaleString("id-ID")}%0A`;
-    total += item.harga;
   });
-
-  document.getElementById("total").innerHTML =
-    "Total: Rp " + total.toLocaleString("id-ID");
-
-  window.pesanWA = pesan + `%0A*Total: Rp ${total.toLocaleString("id-ID")}*`;
 }
 
-function kirimWhatsApp() {
-  if (cart.length === 0) return alert("Keranjang masih kosong!");
-  
-  window.open(
-    `https://wa.me/${nomorWA}?text=${window.pesanWA}`,
-    "_blank"
-  );
+totalEl.textContent = "Rp " + total.toLocaleString("id-ID");
 
-  localStorage.clear();
-}
+  function checkoutWeb() {
+    const nama = document.getElementById("nama").value;
+    const wa = document.getElementById("wa").value;
+
+    if (!nama || !wa) {
+      alert("Nama dan WhatsApp wajib diisi");
+      return;
+    }
+
+    const order = {
+      nama,
+      wa,
+      cart,
+      total,
+      waktu: new Date().toLocaleString("id-ID")
+    };
+
+    localStorage.setItem("lastOrder", JSON.stringify(order));
+    alert("Pesanan berhasil dibuat 🎉");
+
+    btnWA.disabled = false;
+  }
+
+  function checkoutWA() {
+    const order = JSON.parse(localStorage.getItem("lastOrder"));
+    if (!order) return;
+
+    let pesan = `*PESANAN WEDDING NEEDS*%0A%0A`;
+    pesan += `Nama: ${order.nama}%0A`;
+
+    order.cart.forEach(item => {
+      pesan += `• ${item.name} (${item.qty} x Rp ${item.price.toLocaleString("id-ID")})%0A`;
+    });
+
+    pesan += `%0ATotal: Rp ${order.total.toLocaleString("id-ID")}`;
+
+    const noAdmin = "6283811842365";
+    window.open(`https://wa.me/${noAdmin}?text=${pesan}`, "_blank");
+
+    localStorage.removeItem("cart");
+  }
 </script>
-<script src="js2/bootstrap.min.js"></script>
+
+<script src="js2/bootstrap.bundle.min.js"></script>
+<script src="js/Cart.js"></script>
 </body>
 </html>

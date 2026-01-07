@@ -1,39 +1,119 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Needs Store</title>
-<link href="css2/bootstrap.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Needs Store</title>
+  <link rel="stylesheet" href="css2/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>   
 
-<nav class="navbar">
-<h2>Wedding Needs</h2>
-<div class="menu">
-<a href="index.html">Home</a>
-<a href="produk.html">Produk</a>
-<a href="paket.html">Paket</a>
-<a href="best-seller.html">Best Seller</a>
-<a href="paket-promo.html">Paket Promo</a>
-<a href="galeri.html">Galeri</a>
-<a href="tentang.html">Tentang</a>
-<a href="kontak.html">Kontak</a>
-<a href="cart.html" class="cart-btn">🛒</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Wedding Needs</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="paket.html">Paket</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-seller.html">Best Seller</a></li>
+          <li class="nav-item"><a class="nav-link" href="paket-promo.html">Paket Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">🛒</a></li>
+          <button id="darkModeToggle" class="dark-toggle">🌙 Dark</button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552" class="d-block w-100" style="height:500px; object-fit:cover;" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/love.webp" class="d-block w-100" style="height:500px; object-fit:cover;" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/people-wedding.jpg" class="d-block w-100" style="height:500px; object-fit:cover;" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
-</nav>
 
 
-<header class="hero">
-<h1>Wedding Needs Store</h1>
-<p>Solusi lengkap kebutuhan pernikahan Anda</p>
-<a href="produk.html" class="btn">Lihat Produk</a>
-</header>
 
+  <header class="hero">
+    <h1>Wedding Needs Store</h1>
+    <p>Solusi lengkap kebutuhan pernikahan Anda</p>
+    <a href="produk.html" class="btn btn-primary">Lihat Produk</a>
+  </header>
 
-<footer>©2025 Wedding Needs Store.Mewujudkan Pernikahan Impian Anda</footer>
+  
+  <section class="d-flex justify-content-around text-center">
+    <div class="feature">
+      <span>💫</span>
+      <h3>Fashion Wedding</h3>
+      <p>Gaun, jas, dan aksesoris elegan untuk melengkapi penampilan di hari istimewa.</p>
+    </div>
+    <div class="feature">
+      <span>🌌</span>
+      <h3>Dekorasi & Venue</h3>
+      <p>Pilihan dekorasi premium dan konsep venue yang membuat suasana lebih berkesan.</p>
+    </div>
+    <div class="feature">
+      <span>🔥</span>
+      <h3>Catering & Paket</h3>
+      <p>Menu lezat dengan paket hemat yang bisa disesuaikan dengan kebutuhan Anda.</p>
+    </div>
+  </section>
 
-<script src="js2/bootstrap.min.js"></script>
+  
+  <section class="promo text-center">
+    <h2>Paket Promo Spesial Awal Tahun 🎉</h2>
+    <p>Dapatkan diskon hingga 30% untuk semua paket pernikahan!</p>
+    <a href="paket-promo.html" class="btn btn-success">Lihat Promo</a>
+  </section>
+
+ 
+  <section class="about container d-flex flex-wrap align-items-center">
+    <div class="about-text col-md-6">
+      <h2>Visi & Misi Kami</h2>
+      <p>Visi kami adalah menghadirkan pernikahan yang bukan hanya indah, tetapi juga penuh makna. 
+      Misi kami adalah menciptakan pengalaman premium yang tetap bersahabat, dengan detail elegan yang 
+      membuat setiap momen terasa abadi.</p>
+    </div>
+    <div class="about-img col-md-6">
+      <img src="https://media.istockphoto.com/id/1190043570/id/foto/selamat-fotografi-pernikahan-calon-pengantin-di-upacara-pernikahan-tradisi-pernikahan-ditaburi.jpg?s=612x612&w=0&k=20&c=1Xxrn4QlrgU8tZ1ORt18mVHgubUzsb-0hKaQrz9YhhQ=" class="d-block mx-auto" style="max-height:300px; object-fit:cover;" alt="Wedding vision">
+    </div>
+  </section>
+
+  <footer class="text-center py-3">
+    ©2026 Wedding Needs Store. Mewujudkan Pernikahan Impian Anda
+  </footer>
+  
+  <script src="js2/bootstrap.bundle.min.js"></script>
+  <script src="js/Cart.js"></script>
+  
 </body>
 </html>

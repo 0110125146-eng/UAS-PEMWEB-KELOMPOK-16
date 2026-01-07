@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css2/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #fff9fb;
+      background-color: #ffffff;
     }
     .navbar-brand { font-weight: 600; }
     .hero {
@@ -22,7 +22,7 @@
     }
     .footer {
       background-color: #ff7eb3;
-      color: #fff;
+      color: #000000;
       padding: 2rem 0;
     }
   </style>
@@ -31,23 +31,24 @@
 <body>
 
   
-  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">Wedding Needs Store</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="#">Wedding Needs</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-          <a class="nav-link" href="index.html">Beranda</a>
-          </li>
-
-          <li class="nav-item"><a class="nav-link active" href="#">Tentang Kami</a></li>
-          <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
-          <li class="nav-item">
-          <a class="nav-link" href="kontak.html">Kontak</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="paket.html">Paket</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-seller.html">Best Seller</a></li>
+          <li class="nav-item"><a class="nav-link" href="paket-promo.html">Paket Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">🛒</a></li>
         </ul>
       </div>
     </div>
@@ -84,18 +85,17 @@
           <a href="#layanan" class="btn btn-primary mt-3">Pelajari Layanan Kami</a>
         </div>
         <div class="col-lg-6">
-       <img src="https://i.ibb.co.com/7tcx8kFr/decor.jpg"
+       <img src="img/fa.png"
      class="w-100 rounded-3 shadow"
      alt="Wedding Decor"
-     style="max-height: 600px; object-fit: cover;">
+     style="max-height: 800px; object-fit: cover;">
         </div>
       </div>
     </div>
   </section>
 
-  
-  <section id="layanan" class="py-5 bg-light">
-    <div class="container">
+
+    <div class="">
       <h2 class="text-center mb-4">Layanan Kami</h2>
       <div class="row g-4">
         <div class="col-md-4 text-center">
@@ -118,7 +118,7 @@
         </div>
       </div>
     </div>
-  </section>
+ 
 
   
   <section id="kontak" class="py-5">
@@ -144,5 +144,6 @@
   </footer>
 
   <script src="js2/bootstrap.bundle.min.js"></script>
+  <script src="js/Cart.js"></script>
 </body>
 </html>
